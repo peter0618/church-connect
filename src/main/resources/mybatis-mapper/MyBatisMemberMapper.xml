@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.churchconnect.repository.member.MyBatisMemberMapper">
+  <select id="findBySearchParam" resultType="MemberEntity">
+    SELECT id,
+           name,
+           birth_date,
+           phone_number,
+           registration_date,
+           position,
+           cell_name,
+           address,
+           family_info,
+           note,
+           gender,
+           created_at,
+           updated_at,
+           deleted_at
+    FROM member
+    WHERE deleted_at IS NULL
+    <if test="name != null and name != ''">
+      AND name Like CONCAT('%',#{name},'%')
+    </if>
+  </select>
+</mapper>
