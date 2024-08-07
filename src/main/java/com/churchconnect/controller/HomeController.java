@@ -22,16 +22,16 @@ public class HomeController {
 
     @GetMapping("")
     public String home(Model model, @ModelAttribute("name") String name) {
-        if (!name.isEmpty()) {
-            MemberSearchParam param = new MemberSearchParam(name);
-            List<MemberEntity> list = memberService.findBySearchParam(param);
-            model.addAttribute("list", list);
-
-            if (list.isEmpty()) {
-                model.addAttribute("emptyList", true);
-            }
+        if (name.isEmpty()) {
+            return "home";
         }
 
+        MemberSearchParam param = new MemberSearchParam(name);
+        List<MemberEntity> list = memberService.findBySearchParam(param);
+        model.addAttribute("list", list);
+        if (list.isEmpty()) {
+            model.addAttribute("emptyList", true);
+        }
         return "home";
     }
 }
