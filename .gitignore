@@ -37,3 +37,6 @@ out/
 .vscode/
 
 local-infra/volume/*
+
+### 운영환경변수 ###
+src/main/resources/application-prod.properties
