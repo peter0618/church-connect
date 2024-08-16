@@ -35,6 +35,9 @@ dependencies {
 	// Mybatis
 	implementation 'org.mybatis.spring.boot:mybatis-spring-boot-starter:2.2.0'
 
+	// spring-security
+	implementation "org.springframework.boot:spring-boot-starter-security"
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'
