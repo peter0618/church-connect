@@ -1,10 +1,10 @@
 package com.churchconnect.controller.member;
 
+import com.churchconnect.common.util.PageUtil;
 import com.churchconnect.controller.member.dto.MemberSearchParams;
-import com.churchconnect.domain.member.MemberEntity;
 import com.churchconnect.domain.member.MemberService;
+import com.churchconnect.domain.member.dto.MemberPageDto;
 import com.churchconnect.domain.member.dto.MemberSearchCriteria;
-import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -32,7 +32,7 @@ public class MemberController {
             page = 1; // fixme: 환경변수에서 default 받기
         }
         if (pageListSize < 1) {
-            pageListSize = 10; // fixme: 환경변수에서 default 받기
+            pageListSize = 20; // fixme: 환경변수에서 default 받기
         }
         int blockListSize = 5; // fixme: 환경변수에서 default 받기
 
@@ -42,9 +42,11 @@ public class MemberController {
             .name(queryParams.getName())
             .build();
 
-        List<MemberEntity> list = memberService.findBySearchCriteria(criteria);
+        MemberPageDto memberPageDto = memberService.findBySearchCriteria(criteria);
+        PageUtil pageUtil = new PageUtil(page, memberPageDto.getTotalCount(), pageListSize, blockListSize);
 
-        model.addAttribute("list", list);
+        model.addAttribute("pageUtil", pageUtil);
+        model.addAttribute("list", memberPageDto.getList());
         return "members/list";
     }
 }

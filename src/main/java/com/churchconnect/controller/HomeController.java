@@ -2,6 +2,7 @@ package com.churchconnect.controller;
 
 import com.churchconnect.domain.member.MemberEntity;
 import com.churchconnect.domain.member.MemberService;
+import com.churchconnect.domain.member.dto.MemberPageDto;
 import com.churchconnect.domain.member.dto.MemberSearchCriteria;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
@@ -27,7 +28,8 @@ public class HomeController {
         }
 
         MemberSearchCriteria param = MemberSearchCriteria.builder().name(name).build();
-        List<MemberEntity> list = memberService.findBySearchCriteria(param);
+        MemberPageDto memberPageDto = memberService.findBySearchCriteria(param);
+        List<MemberEntity> list = memberPageDto.getList();
         model.addAttribute("list", list);
         if (list.isEmpty()) {
             model.addAttribute("emptyList", true);

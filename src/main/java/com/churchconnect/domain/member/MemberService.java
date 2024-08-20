@@ -1,5 +1,6 @@
 package com.churchconnect.domain.member;
 
+import com.churchconnect.domain.member.dto.MemberPageDto;
 import com.churchconnect.domain.member.dto.MemberSearchCriteria;
 import java.util.List;
 import org.springframework.stereotype.Service;
@@ -12,7 +13,9 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public List<MemberEntity> findBySearchCriteria(MemberSearchCriteria criteria) {
-        return memberRepository.findBySearchCriteria(criteria);
+    public MemberPageDto findBySearchCriteria(MemberSearchCriteria criteria) {
+        List<MemberEntity> list = memberRepository.findBySearchCriteria(criteria);
+        int totalCount = memberRepository.totalCountByCriteria(criteria);
+        return new MemberPageDto(list, totalCount);
     }
 }

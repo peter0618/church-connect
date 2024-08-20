@@ -5,4 +5,5 @@ import java.util.List;
 
 public interface MemberRepository {
     List<MemberEntity> findBySearchCriteria(MemberSearchCriteria criteria);
+    int totalCountByCriteria(MemberSearchCriteria criteria);
 }
