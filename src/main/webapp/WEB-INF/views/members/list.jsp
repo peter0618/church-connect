@@ -39,36 +39,51 @@
                 </tr>
                 </thead>
                 <tbody>
-                <tr>
-                    <th scope="row">3</th>
-                    <td>Peter</td>
-                    <td>집사</td>
-                    <td>성령셀</td>
-                    <td>010-1111-1111</td>
-                    <td>1985-01-01</td>
-                    <td class="member-address" data-bs-toggle="tooltip" data-bs-title="광진구 중랑구 겸재로 50길 6 대성쉐르빌 302호">광진구 중랑구 겸재로 50길 6 대성쉐르빌 302호</td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <th scope="row">2</th>
-                    <td>Grace</td>
-                    <td>간사</td>
-                    <td>사랑셀</td>
-                    <td>010-2222-2222</td>
-                    <td>1987-02-02</td>
-                    <td class="member-address" data-bs-toggle="tooltip" data-bs-title="광진구 군자동">광진구 군자동</td>
-                    <td>2016-02-17</td>
-                </tr>
-                <tr>
-                    <th scope="row">1</th>
-                    <td>John</td>
-                    <td>성도</td>
-                    <td>소망셀</td>
-                    <td>010-3333-3333</td>
-                    <td>1989-03-03</td>
-                    <td class="member-address" data-bs-toggle="tooltip" data-bs-title="강원도 철원군 동송읍 이평로 131번길 23 우림빌리지 3동 302호">강원도 철원군 동송읍 이평로 131번길 23 우림빌리지 3동 302호</td>
-                    <td></td>
-                </tr>
+<%--                <c:set var="pageUncount"--%>
+<%--                       value="${pageUtil.totalRowCount - ((pageUtil.pageNum - 1) *  pageUtil.pageListSize)}"/>--%>
+                <c:forEach items="${list}" var="listVo">
+                    <tr>
+                        <th scope="row">#</th>
+                        <td>${listVo.name}</td>
+                        <td>${listVo.position}</td>
+                        <td>${listVo.cellName}</td>
+                        <td>${listVo.phoneNumber}</td>
+                        <td><fmt:formatDate value="${listVo.birthDate}" pattern="yyyy-MM-dd" /></td>
+                        <td class="member-address" data-bs-toggle="tooltip" data-bs-title="${listVo.address}">${listVo.address}</td>
+                        <td><fmt:formatDate value="${listVo.registrationDate}" pattern="yyyy-MM-dd" /></td>
+                    </tr>
+<%--                <c:set var="pageUncount" value="${pageUncount - 1}"/>--%>
+                </c:forEach>
+<%--                <tr>--%>
+<%--                    <th scope="row">3</th>--%>
+<%--                    <td>Peter</td>--%>
+<%--                    <td>집사</td>--%>
+<%--                    <td>성령셀</td>--%>
+<%--                    <td>010-1111-1111</td>--%>
+<%--                    <td>1985-01-01</td>--%>
+<%--                    <td class="member-address" data-bs-toggle="tooltip" data-bs-title="광진구 중랑구 겸재로 50길 6 대성쉐르빌 302호">광진구 중랑구 겸재로 50길 6 대성쉐르빌 302호</td>--%>
+<%--                    <td></td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <th scope="row">2</th>--%>
+<%--                    <td>Grace</td>--%>
+<%--                    <td>간사</td>--%>
+<%--                    <td>사랑셀</td>--%>
+<%--                    <td>010-2222-2222</td>--%>
+<%--                    <td>1987-02-02</td>--%>
+<%--                    <td class="member-address" data-bs-toggle="tooltip" data-bs-title="광진구 군자동">광진구 군자동</td>--%>
+<%--                    <td>2016-02-17</td>--%>
+<%--                </tr>--%>
+<%--                <tr>--%>
+<%--                    <th scope="row">1</th>--%>
+<%--                    <td>John</td>--%>
+<%--                    <td>성도</td>--%>
+<%--                    <td>소망셀</td>--%>
+<%--                    <td>010-3333-3333</td>--%>
+<%--                    <td>1989-03-03</td>--%>
+<%--                    <td class="member-address" data-bs-toggle="tooltip" data-bs-title="강원도 철원군 동송읍 이평로 131번길 23 우림빌리지 3동 302호">강원도 철원군 동송읍 이평로 131번길 23 우림빌리지 3동 302호</td>--%>
+<%--                    <td></td>--%>
+<%--                </tr>--%>
                 </tbody>
             </table>
         </div>
