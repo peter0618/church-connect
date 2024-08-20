@@ -1,4 +1,6 @@
-CREATE TABLE Member (
+-- member (회원 정보) 테이블 생성
+DROP TABLE IF EXISTS member;
+CREATE TABLE member (
     id BIGINT UNSIGNED AUTO_INCREMENT PRIMARY KEY COMMENT 'Primary Key',
     name VARCHAR(100) NOT NULL COMMENT '회원 이름',
     birth_date DATE NOT NULL COMMENT '생년월일',
