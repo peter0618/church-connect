@@ -11,6 +11,9 @@
                     <li class="nav-item">
                         <a class="nav-link active" href="${rootSrc}/">홈</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="${rootSrc}/members">회원</a>
+                    </li>
 <%--                    <li class="nav-item">--%>
 <%--                        <a class="nav-link" href="#">회원목록</a>--%>
 <%--                    </li>--%>
