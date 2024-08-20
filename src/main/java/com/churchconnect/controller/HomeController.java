@@ -26,7 +26,7 @@ public class HomeController {
             return "home";
         }
 
-        MemberSearchCriteria param = new MemberSearchCriteria(name);
+        MemberSearchCriteria param = MemberSearchCriteria.builder().name(name).build();
         List<MemberEntity> list = memberService.findBySearchCriteria(param);
         model.addAttribute("list", list);
         if (list.isEmpty()) {

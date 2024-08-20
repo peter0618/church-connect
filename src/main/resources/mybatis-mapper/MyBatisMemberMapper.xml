@@ -22,5 +22,10 @@
     <if test="name != null and name != ''">
       AND name Like CONCAT('%',#{name},'%')
     </if>
+    ORDER BY registration_date DESC, id DESC
+    <if test="page > 0 and pageListSize > 0">
+      <bind name="offset" value="(page-1)*pageListSize" />
+      LIMIT #{offset}, #{pageListSize};
+    </if>
   </select>
 </mapper>
