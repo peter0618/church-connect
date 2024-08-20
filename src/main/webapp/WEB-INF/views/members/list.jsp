@@ -25,6 +25,22 @@
         <!-- 컨텐츠 내용 입력 -->
         <div class="container mt-5" style="height: 100%;">
 
+
+            <form role="form" action="/members" class="mb-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col"><input class="form-control me-2 col-1" name="name" type="search" value="${param.name}" placeholder="이름을 입력해주세요." aria-label="Search" style="height: 53px;"></div>
+                        <div class="col"><input class="form-control me-2 col-1" name="cellName" type="search" value="${param.cellName}" placeholder="셀 이름을 입력해주세요." aria-label="Search" style="height: 53px;"></div>
+                    </div>
+                    <div class="row mt-2">
+                        <div class="col d-flex justify-content-end">
+                            <button type="submit" class="btn btn-dark">검색</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+
+
             <table class="table table-hover">
                 <thead>
                 <tr>

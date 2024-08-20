@@ -13,4 +13,5 @@ public class MemberSearchParams {
     int page;
     int pageListSize;
     String name;
+    String cellName;
 }

@@ -6,6 +6,9 @@
     <if test="name != null and name != ''">
       AND name Like CONCAT('%',#{name},'%')
     </if>
+    <if test="cellName != null and cellName != ''">
+      AND cell_name Like CONCAT('%',#{cellName},'%')
+    </if>
   </sql>
 
   <select id="findBySearchCriteria" resultType="MemberEntity">

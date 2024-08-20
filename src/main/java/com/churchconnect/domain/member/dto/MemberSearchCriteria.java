@@ -11,4 +11,5 @@ public class MemberSearchCriteria {
     int page;
     int pageListSize;
     String name;
+    String cellName;
 }

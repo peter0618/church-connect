@@ -40,6 +40,7 @@ public class MemberController {
             .page(page)
             .pageListSize(pageListSize)
             .name(queryParams.getName())
+            .cellName(queryParams.getCellName())
             .build();
 
         MemberPageDto memberPageDto = memberService.findBySearchCriteria(criteria);
