@@ -5,6 +5,6 @@ import lombok.Getter;
 
 @AllArgsConstructor
 @Getter
-public class MemberSearchParam {
+public class MemberSearchCriteria {
     String name;
 }

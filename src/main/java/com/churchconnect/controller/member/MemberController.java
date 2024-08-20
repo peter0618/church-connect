@@ -2,7 +2,7 @@ package com.churchconnect.controller.member;
 
 import com.churchconnect.domain.member.MemberEntity;
 import com.churchconnect.domain.member.MemberService;
-import com.churchconnect.domain.member.dto.MemberSearchParam;
+import com.churchconnect.domain.member.dto.MemberSearchCriteria;
 import java.util.List;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,8 +24,8 @@ public class MemberController {
      */
     @GetMapping("")
     public String members(Model model){
-        MemberSearchParam param = new MemberSearchParam(null); // TODO: 추후, 검색 기능 고도화 됨에 따라 수정 필요
-        List<MemberEntity> list = memberService.findBySearchParam(param);
+        MemberSearchCriteria criteria = new MemberSearchCriteria(null); // TODO: 추후, 검색 기능 고도화 됨에 따라 수정 필요
+        List<MemberEntity> list = memberService.findBySearchCriteria(criteria);
 
         model.addAttribute("list", list);
         return "members/list";

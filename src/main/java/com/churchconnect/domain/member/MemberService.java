@@ -1,6 +1,6 @@
 package com.churchconnect.domain.member;
 
-import com.churchconnect.domain.member.dto.MemberSearchParam;
+import com.churchconnect.domain.member.dto.MemberSearchCriteria;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -12,7 +12,7 @@ public class MemberService {
         this.memberRepository = memberRepository;
     }
 
-    public List<MemberEntity> findBySearchParam(MemberSearchParam param) {
-        return memberRepository.findBySearchParam(param);
+    public List<MemberEntity> findBySearchCriteria(MemberSearchCriteria criteria) {
+        return memberRepository.findBySearchCriteria(criteria);
     }
 }

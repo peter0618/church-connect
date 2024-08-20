@@ -2,7 +2,7 @@ package com.churchconnect.controller;
 
 import com.churchconnect.domain.member.MemberEntity;
 import com.churchconnect.domain.member.MemberService;
-import com.churchconnect.domain.member.dto.MemberSearchParam;
+import com.churchconnect.domain.member.dto.MemberSearchCriteria;
 import java.util.List;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
@@ -26,8 +26,8 @@ public class HomeController {
             return "home";
         }
 
-        MemberSearchParam param = new MemberSearchParam(name);
-        List<MemberEntity> list = memberService.findBySearchParam(param);
+        MemberSearchCriteria param = new MemberSearchCriteria(name);
+        List<MemberEntity> list = memberService.findBySearchCriteria(param);
         model.addAttribute("list", list);
         if (list.isEmpty()) {
             model.addAttribute("emptyList", true);
