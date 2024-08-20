@@ -43,30 +43,30 @@
 
             <table class="table table-hover">
                 <thead>
-                <tr>
-                    <th class="col-1" scope="col">#</th>
-                    <th class="col-1" scope="col">이름</th>
-                    <th class="col-1" scope="col">직분</th>
-                    <th class="col-1" scope="col">셀</th>
-                    <th class="col-2" scope="col">전화번호</th>
-                    <th class="col-2" scope="col">생년월일</th>
-                    <th class="col-auto" scope="col">주소</th>
-                    <th class="col-2" scope="col">등록일</th>
-                </tr>
+                    <tr>
+                        <th class="col-1 d-none d-md-table-cell" scope="col">#</th>
+                        <th class="col-1" scope="col">이름</th>
+                        <th class="col-1 d-none d-sm-table-cell" scope="col">직분</th> <!-- 이 열은 작은 화면(sm) 이상에서만 보임 -->
+                        <th class="col-1 d-none d-md-table-cell" scope="col">셀</th>  <!-- 이 열은 중간 화면(md) 이상에서만 보임 -->
+                        <th class="col-2" scope="col">전화번호</th>
+                        <th class="col-2 d-none d-lg-table-cell" scope="col">생년월일</th> <!-- 이 열은 큰 화면(lg) 이상에서만 보임 -->
+                        <th class="col-auto d-none d-xl-table-cell" scope="col">주소</th> <!-- 이 열은 매우 큰 화면(xl) 이상에서만 보임 -->
+                        <th class="col-2 d-none d-lg-table-cell" scope="col">등록일</th>
+                    </tr>
                 </thead>
                 <tbody>
                 <c:set var="pageUncount"
                        value="${pageUtil.totalRowCount - ((pageUtil.pageNum - 1) *  pageUtil.pageListSize)}"/>
                 <c:forEach items="${list}" var="listVo">
                     <tr>
-                        <th scope="row">${pageUncount}</th>
-                        <td>${listVo.name}</td>
-                        <td>${listVo.position}</td>
-                        <td>${listVo.cellName}</td>
-                        <td>${listVo.phoneNumber}</td>
-                        <td><fmt:formatDate value="${listVo.birthDate}" pattern="yyyy-MM-dd" /></td>
-                        <td class="member-address" data-bs-toggle="tooltip" data-bs-title="${listVo.address}">${listVo.address}</td>
-                        <td><fmt:formatDate value="${listVo.registrationDate}" pattern="yyyy-MM-dd" /></td>
+                        <th class="col-1 d-none d-md-table-cell" scope="row">${pageUncount}</th>
+                        <td class="col-1">${listVo.name}</td>
+                        <td class="col-1 d-none d-sm-table-cell">${listVo.position}</td>
+                        <td class="col-1 d-none d-md-table-cell">${listVo.cellName}</td>
+                        <td class="col-2">${listVo.phoneNumber}</td>
+                        <td class="col-2 d-none d-lg-table-cell"><fmt:formatDate value="${listVo.birthDate}" pattern="yyyy-MM-dd" /></td>
+                        <td class="member-address col-auto d-none d-xl-table-cell" data-bs-toggle="tooltip" data-bs-title="${listVo.address}">${listVo.address}</td>
+                        <td class="col-2 d-none d-lg-table-cell"><fmt:formatDate value="${listVo.registrationDate}" pattern="yyyy-MM-dd" /></td>
                     </tr>
                 <c:set var="pageUncount" value="${pageUncount - 1}"/>
                 </c:forEach>
