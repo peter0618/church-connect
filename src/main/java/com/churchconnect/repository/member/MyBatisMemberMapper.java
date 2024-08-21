@@ -9,4 +9,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface MyBatisMemberMapper {
     List<MemberEntity> findBySearchCriteria(MemberSearchCriteria criteria);
     int totalCountByCriteria(MemberSearchCriteria criteria);
+    List<MemberEntity> findAll();
 }

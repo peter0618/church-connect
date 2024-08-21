@@ -79,7 +79,9 @@
         </div>
 
         <div class="container mt-5" style="height: 100%;">
-            <button type="button" class="btn btn-dark d-none d-xl-block" onclick="onExcelDownloadClicked();">엑셀 다운로드</button>
+            <form action="/members/excel/downloadAll" method="get">
+                <button type="submit" class="btn btn-dark d-none d-xl-block">전체 엑셀다운로드</button>
+            </form>
         </div>
 
     </div>
@@ -98,11 +100,6 @@
     // tooltip init. (ref: https://getbootstrap.com/docs/5.3/components/tooltips/#enable-tooltips)
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
-  }
-
-  function onExcelDownloadClicked() {
-    // TODO: 엑셀 다운로드 API 호출
-    alert('엑셀 다운로드 기능 개발중입니다!');
   }
 </script>
 </body>

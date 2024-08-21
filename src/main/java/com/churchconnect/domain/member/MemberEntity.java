@@ -25,8 +25,30 @@ public class MemberEntity extends BaseEntity {
     private Gender gender; // 성별
 
     public enum Gender {
-        MALE,
-        FEMALE
+        MALE("남"),
+        FEMALE("여");
+
+        private final String koreanName;
+
+        // 생성자
+        Gender(String koreanName) {
+            this.koreanName = koreanName;
+        }
+
+        // 한글명을 반환하는 메서드
+        public String getKoreanName() {
+            return koreanName;
+        }
+
+        // 한글명으로 Gender를 찾는 정적 메서드
+        public static Gender fromKoreanName(String koreanName) {
+            for (Gender gender : Gender.values()) {
+                if (gender.koreanName.equals(koreanName)) {
+                    return gender;
+                }
+            }
+            throw new IllegalArgumentException("Unknown Korean name: " + koreanName);
+        }
     }
 
     /**

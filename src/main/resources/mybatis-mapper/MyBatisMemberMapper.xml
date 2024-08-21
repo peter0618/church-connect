@@ -42,4 +42,24 @@
     WHERE deleted_at IS NULL
         <include refid="searchCriteria"/>
   </select>
+
+  <select id="findAll" resultType="MemberEntity">
+    SELECT id,
+           name,
+           birth_date,
+           phone_number,
+           registration_date,
+           position,
+           cell_name,
+           address,
+           family_info,
+           note,
+           gender,
+           created_at,
+           updated_at,
+           deleted_at
+     FROM member
+    WHERE deleted_at IS NULL
+    ORDER BY registration_date DESC, id DESC
+  </select>
 </mapper>

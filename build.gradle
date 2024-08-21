@@ -38,6 +38,10 @@ dependencies {
 	// spring-security
 	implementation "org.springframework.boot:spring-boot-starter-security"
 
+	// for Excel Download
+	implementation 'org.apache.poi:poi-ooxml:5.2.2'
+	implementation 'org.apache.poi:poi:5.2.2'
+
 	compileOnly 'org.projectlombok:lombok'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
 	runtimeOnly 'com.mysql:mysql-connector-j'

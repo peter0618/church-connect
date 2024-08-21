@@ -24,4 +24,9 @@ public class MyBatisMemberRepository implements MemberRepository {
     public int totalCountByCriteria(MemberSearchCriteria criteria) {
         return mapper.totalCountByCriteria(criteria);
     }
+
+    @Override
+    public List<MemberEntity> findAll() {
+        return mapper.findAll();
+    }
 }

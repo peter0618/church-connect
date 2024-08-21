@@ -1,5 +1,6 @@
 package com.churchconnect.common.util;
 
+import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
@@ -19,5 +20,18 @@ public class DateTimeUtil {
         }
 
         return age;
+    }
+
+    /**
+     * Date 객체를 yyyy-MM-dd format 문자열로 변환하여 반환합니다.
+     * Date 객체가 null 인 경우, 빈문자열을 반환합니다.
+     */
+    public static String convertToYMD(Date date) {
+        if (date == null) {
+            return "";
+        }
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        return dateFormat.format(date);
     }
 }

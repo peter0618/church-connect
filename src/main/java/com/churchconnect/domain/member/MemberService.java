@@ -18,4 +18,8 @@ public class MemberService {
         int totalCount = memberRepository.totalCountByCriteria(criteria);
         return new MemberPageDto(list, totalCount);
     }
+
+    public List<MemberEntity> findAll() {
+        return this.memberRepository.findAll();
+    }
 }
