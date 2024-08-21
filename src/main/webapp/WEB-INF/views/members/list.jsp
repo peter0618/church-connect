@@ -78,7 +78,9 @@
             <%@ include file="../include/pagination.jsp" %>
         </div>
 
-        <div class="container mt-5" style="height: 100%;">
+        <div class="container mt-5 d-flex" style="height: 100%;">
+            <button type="button" class="btn btn-dark d-none d-xl-block me-2" onclick="window.print();">인쇄</button>
+            <button type="button" class="btn btn-dark d-none d-xl-block me-2" onclick="excelDownload();">엑셀다운로드</button>
             <form action="/members/excel/downloadAll" method="get">
                 <button type="submit" class="btn btn-dark d-none d-xl-block">전체 엑셀다운로드</button>
             </form>
@@ -101,6 +103,40 @@
     const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]');
     const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl));
   }
+
+    function excelDownload() {
+        // 현재 페이지의 query string 가져오기
+        const queryString = location.search;
+
+        const url = '/members/excel/download?' + queryString; // 다운로드할 API의 URL
+
+        fetch(url, {
+            method: 'GET', // GET 방식으로 요청
+            headers: {
+                'Content-Type': 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'
+            }
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+            return response.blob(); // 응답을 Blob 형태로 변환
+        })
+        .then(blob => {
+            // Blob으로부터 임시 URL 생성
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'downloaded_excel.xlsx'; // 다운로드할 파일의 이름
+            document.body.appendChild(a);
+            a.click(); // 다운로드를 시작하는 클릭 이벤트 트리거
+            document.body.removeChild(a); // 트리거 후 a 요소 제거
+            window.URL.revokeObjectURL(url); // 임시 URL 해제
+        })
+        .catch(error => {
+            console.error('There has been a problem with your fetch operation:', error);
+        });
+    }
 </script>
 </body>
 </html>

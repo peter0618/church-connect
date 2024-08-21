@@ -57,8 +57,39 @@ public class MemberController {
     }
 
     @GetMapping(value = "/excel/downloadAll")
-    public void excelDownload(@ModelAttribute MemberSearchParams queryParams, HttpServletResponse response) throws IOException {
+    public void excelDownloadAll(HttpServletResponse response) throws IOException {
         List<MemberEntity> list = memberService.findAll();
+
+        MemberExcelFile memberExcelFile = new MemberExcelFile(list);
+
+        // 컨텐츠 타입과 파일명 지정
+        response.setContentType("ms-vnd/excel");
+        response.setHeader("Content-Disposition", "attachment;filename=members.xlsx");
+
+        // Excel File Output
+        memberExcelFile.write(response.getOutputStream());
+    }
+
+    @GetMapping(value = "/excel/download")
+    public void excelDownload(@ModelAttribute MemberSearchParams queryParams, HttpServletResponse response) throws IOException {
+        int page = queryParams.getPage();
+        int pageListSize = queryParams.getPageListSize();
+        if (page < 1) {
+            page = 1; // fixme: 환경변수에서 default 받기
+        }
+        if (pageListSize < 1) {
+            pageListSize = 20; // fixme: 환경변수에서 default 받기
+        }
+
+        MemberSearchCriteria criteria = MemberSearchCriteria.builder()
+            .page(page)
+            .pageListSize(pageListSize)
+            .name(queryParams.getName())
+            .cellName(queryParams.getCellName())
+            .build();
+
+        MemberPageDto memberPageDto = memberService.findBySearchCriteria(criteria);
+        List<MemberEntity> list = memberPageDto.getList();
 
         MemberExcelFile memberExcelFile = new MemberExcelFile(list);
 
